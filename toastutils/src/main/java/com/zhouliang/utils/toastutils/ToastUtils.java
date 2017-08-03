@@ -1,6 +1,7 @@
 package com.zhouliang.utils.toastutils;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.widget.Toast;
 
 import com.zhouliang.utils.logutils.LogUtils;
@@ -43,5 +44,48 @@ public class ToastUtils {
         }
 
         this.mToast.show();
+    }
+    public void showCustomToast(Context mContext,CharSequence msg,int duration){
+        if(msg == null || msg.equals("")) {
+            LogUtils.i(TAG, "Toast的提示信息不能为空，弹出Toast失败");
+        }
+
+        if(this.mToast == null) {
+            this.mToast = Toast.makeText(mContext, msg, duration);
+        } else {
+            this.mToast.setText(msg);
+        }
+        this.mToast.setGravity(Gravity.CENTER,0,0);
+        this.mToast.show();
+    }
+    public void showToast(Context context, CharSequence msg,boolean isCustom) {
+        if(isCustom){
+            this.showCustomToast(context, msg, 0);
+        }else{
+            this.showToast(context, msg, 0);
+        }
+    }
+
+    public void showToast(Context context, int stringResID,boolean isCustom) {
+        if(isCustom){
+            this.showCustomToast(context, context.getString(stringResID), 0);
+        }else{
+            this.showToast(context, context.getString(stringResID), 0);
+        }
+    }
+
+    public void showToast(Context context, int stringResID, int duration,boolean isCustom) {
+        if(isCustom){
+            this.showCustomToast(context, context.getString(stringResID), duration);
+        }else{
+            this.showToast(context, context.getString(stringResID), duration);
+        }
+    }
+
+    public void dismiss() {
+        if(this.mToast != null) {
+            this.mToast.cancel();
+        }
+
     }
 }

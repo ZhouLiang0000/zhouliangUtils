@@ -32,7 +32,7 @@ public class ToastUtils {
     public static ToastUtils getIntance() {
         return ToastUtilsHolder.instance;
     }
-    public void showToast(Context mContext,CharSequence msg,int duration){
+    public void showToast(Context mContext,CharSequence msg,int duration,boolean isCustom){
         if(msg == null || msg.equals("")) {
             LogUtils.i(TAG, "Toast的提示信息不能为空，弹出Toast失败");
         }
@@ -42,44 +42,21 @@ public class ToastUtils {
         } else {
             this.mToast.setText(msg);
         }
-
-        this.mToast.show();
-    }
-    public void showCustomToast(Context mContext,CharSequence msg,int duration){
-        if(msg == null || msg.equals("")) {
-            LogUtils.i(TAG, "Toast的提示信息不能为空，弹出Toast失败");
+        if(isCustom){
+            this.mToast.setGravity(Gravity.CENTER,0,0);
         }
-
-        if(this.mToast == null) {
-            this.mToast = Toast.makeText(mContext, msg, duration);
-        } else {
-            this.mToast.setText(msg);
-        }
-        this.mToast.setGravity(Gravity.CENTER,0,0);
         this.mToast.show();
     }
     public void showToast(Context context, CharSequence msg,boolean isCustom) {
-        if(isCustom){
-            this.showCustomToast(context, msg, 0);
-        }else{
-            this.showToast(context, msg, 0);
-        }
+        this.showToast(context, msg, 0,isCustom);
     }
 
     public void showToast(Context context, int stringResID,boolean isCustom) {
-        if(isCustom){
-            this.showCustomToast(context, context.getString(stringResID), 0);
-        }else{
-            this.showToast(context, context.getString(stringResID), 0);
-        }
+        this.showToast(context, context.getString(stringResID), 0,isCustom);
     }
 
     public void showToast(Context context, int stringResID, int duration,boolean isCustom) {
-        if(isCustom){
-            this.showCustomToast(context, context.getString(stringResID), duration);
-        }else{
-            this.showToast(context, context.getString(stringResID), duration);
-        }
+        this.showToast(context, context.getString(stringResID), duration,isCustom);
     }
 
     public void dismiss() {

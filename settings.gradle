@@ -1,1 +1,1 @@
-include ':app', ':toastutils'
+include ':app', ':toastutils', ':logutils'

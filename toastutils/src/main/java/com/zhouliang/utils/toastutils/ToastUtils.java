@@ -3,6 +3,8 @@ package com.zhouliang.utils.toastutils;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.zhouliang.utils.logutils.LogUtils;
+
 /**
  * Created by zhouliang on 2017/8/3.
  */
@@ -31,7 +33,7 @@ public class ToastUtils {
     }
     public void showToast(Context mContext,CharSequence msg,int duration){
         if(msg == null || msg.equals("")) {
-//            LogUtils.i(TAG, "Toast的提示信息不能为空，弹出Toast失败");
+            LogUtils.i(TAG, "Toast的提示信息不能为空，弹出Toast失败");
         }
 
         if(this.mToast == null) {

@@ -27,8 +27,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.github.ZhouLiang0000.zhouliangUtils:logutils:5.0'
-    compile 'com.github.ZhouLiang0000.zhouliangUtils:toastutils:5.0'
+    compile 'com.github.ZhouLiang0000.zhouliangUtils:logutils:5.0.2'
+    compile 'com.github.ZhouLiang0000.zhouliangUtils:toastutils:5.0.2'
     testCompile 'junit:junit:4.12'
     compile 'com.google.code.gson:gson:2.8.1'
 }

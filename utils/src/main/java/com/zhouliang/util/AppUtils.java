@@ -6,7 +6,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 
-import com.zhouliang.utils.logutils.LogUtils;
 
 /**
  * Created by zhouliang on 2017/8/4.

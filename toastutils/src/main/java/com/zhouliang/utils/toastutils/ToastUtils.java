@@ -45,7 +45,7 @@ public class ToastUtils {
         if(isCustom){
             this.mToast.setGravity(Gravity.CENTER,0,0);
         }else{
-            this.mToast.setGravity(Gravity.NO_GRAVITY,0,0);
+            this.mToast.setGravity(Gravity.BOTTOM,0,0);
         }
         this.mToast.show();
     }

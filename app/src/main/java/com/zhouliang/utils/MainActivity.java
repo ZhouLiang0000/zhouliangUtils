@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
+import com.zhouliang.util.LogUtils;
+import com.zhouliang.util.NetUtils;
+import com.zhouliang.util.ToastUtils;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.main_bt)
     public void onViewClicked() {
-//        if (NetUtils.isConnected(MainActivity.this)) {
-//            LogUtils.i(TAG, "点击了测试按钮");
-//            ToastUtils.getIntance().showToast(MainActivity.this, "wo shi toast", true);
-//        } else {
-//            ToastUtils.getIntance().showToast(MainActivity.this, "未连接网络", false);
-//        }
+        if (NetUtils.isConnected(MainActivity.this)) {
+            LogUtils.i(TAG, "点击了测试按钮");
+            ToastUtils.getIntance().showToast(MainActivity.this, "wo shi toast", true);
+        } else {
+            ToastUtils.getIntance().showToast(MainActivity.this, "未连接网络", false);
+        }
     }
 }

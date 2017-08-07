@@ -47,7 +47,7 @@ public class ToastUtils {
         if (isCustom) {
             this.mToast.setGravity(Gravity.CENTER, 0, 0);
         }else{
-            this.mToast.setGravity(Gravity.BOTTOM,0,50);
+            this.mToast.setGravity(Gravity.BOTTOM,0,mContext.getResources().getDimensionPixelSize(R.dimen.toast_y_offset));
         }
         this.mToast.show();
     }

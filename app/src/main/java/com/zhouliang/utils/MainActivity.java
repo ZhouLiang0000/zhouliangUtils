@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
+import com.zhouliang.util.AppUtils;
 import com.zhouliang.util.LogUtils;
 import com.zhouliang.util.NetUtils;
 import com.zhouliang.util.ToastUtils;
@@ -28,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
     public void onViewClicked() {
         if (NetUtils.isConnected(MainActivity.this)) {
             LogUtils.i(TAG, "点击了测试按钮");
-            ToastUtils.getIntance().showToast(MainActivity.this, "wo shi toast", true);
+            ToastUtils.getIntance().showToast(MainActivity.this, AppUtils.getAppName(MainActivity.this), true);
         } else {
-            ToastUtils.getIntance().showToast(MainActivity.this, "未连接网络", false);
+            ToastUtils.getIntance().showToast(MainActivity.this, AppUtils.getVersionName(MainActivity.this), false);
         }
     }
 }

@@ -88,4 +88,16 @@ public class AppUtils {
         }
         return false;
     }
+    public static int getSystemVersion(Context context) {
+        int targetSdkVersion = 0;
+
+        try {
+            PackageInfo e = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            targetSdkVersion = e.applicationInfo.targetSdkVersion;
+        } catch (PackageManager.NameNotFoundException var3) {
+            LogUtils.e(TAG, "获取应用versionName异常", var3);
+        }
+
+        return targetSdkVersion;
+    }
 }

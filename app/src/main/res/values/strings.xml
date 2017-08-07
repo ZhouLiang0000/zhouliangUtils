@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">zhouliangUtils</string>
+
+    <string name="permissions_hint_title">请进入设置打开相应权限</string>
+    <string name="permissions_hint_message">需要获取读取手机状态的权限</string>
+    <string name="permissions_hint_right_button">确定</string>
+    <string name="permissions_hint_lift_button">取消</string>
 </resources>

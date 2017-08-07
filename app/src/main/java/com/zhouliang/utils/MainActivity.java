@@ -23,6 +23,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
     private static String TAG = MainActivity.class.getSimpleName();
     private static String packageName = "com.ai.kara.aitribe";
+    private static String permission = Manifest.permission.READ_PHONE_STATE;
     private static final int MAIN_PERMISSION_CODE = 1;
     @Bind(R.id.main_bt)
     Button mainBt;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     @OnClick(R.id.main_bt)
     public void onViewClicked() {
         if (NetUtils.isConnected(MainActivity.this)) {
-            if (checkPermission()) {
+            if (PermissionUtils.checkPermission(MainActivity.this,permission)) {
                 dealMessage();
             } else {
                 EasyPermissions.requestPermissions(this, "需要获取手机状态的权限", MAIN_PERMISSION_CODE, Manifest.permission.READ_PHONE_STATE);
@@ -78,14 +79,5 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
         dealMessage();
-    }
-
-    private boolean checkPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (!PermissionUtils.isPermissionGranted(this, Manifest.permission.READ_PHONE_STATE)) {
-                return false;
-            }
-        }
-        return true;
     }
 }

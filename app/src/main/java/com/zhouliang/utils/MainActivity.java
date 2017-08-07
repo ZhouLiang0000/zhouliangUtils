@@ -1,7 +1,6 @@
 package com.zhouliang.utils;
 
 import android.Manifest;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     @OnClick(R.id.main_bt)
     public void onViewClicked() {
         if (NetUtils.isConnected(MainActivity.this)) {
-            if (PermissionUtils.checkPermission(MainActivity.this,permission)) {
+            if (PermissionUtils.checkPermission(MainActivity.this, permission)) {
                 dealMessage();
             } else {
                 EasyPermissions.requestPermissions(this, "需要获取手机状态的权限", MAIN_PERMISSION_CODE, Manifest.permission.READ_PHONE_STATE);

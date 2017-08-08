@@ -1,15 +1,23 @@
 package com.zhouliang.utils;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import com.zhouliang.util.AppUtils;
+import com.zhouliang.util.LogUtils;
 import com.zhouliang.util.NetUtils;
 import com.zhouliang.util.PermissionUtils;
 import com.zhouliang.util.ToastUtils;
+import com.zhouliang.utils.base.UtilsActivity;
+import com.zhouliang.utils.message.MessageEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -19,7 +27,7 @@ import butterknife.OnClick;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
+public class MainActivity extends UtilsActivity implements EasyPermissions.PermissionCallbacks {
     private static String TAG = MainActivity.class.getSimpleName();
     private static String packageName = "com.ai.kara.aitribe";
     private static String permission = Manifest.permission.READ_PHONE_STATE;
@@ -36,6 +44,19 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     @OnClick(R.id.main_bt)
     public void onViewClicked() {
+        dealMethod();
+    }
+
+    private void skipActivityMethod() {
+        startActivity(new Intent(MainActivity.this, EventBusActivity.class));
+    }
+
+    private void dealMethod() {
+//        dealUtils();
+        skipActivityMethod();
+    }
+
+    private void dealUtils() {
         if (NetUtils.isConnected(MainActivity.this)) {
             if (PermissionUtils.checkPermission(MainActivity.this, permission)) {
                 dealMessage();
@@ -48,12 +69,12 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     }
 
     private void dealMessage() {
+        LogUtils.i(TAG, "点击了测试按钮");
         if (AppUtils.isPackageExist(packageName, MainActivity.this)) {
             AppUtils.uninstallApk(MainActivity.this, packageName);
         } else {
             ToastUtils.getIntance().showToast(MainActivity.this, AppUtils.getAppName(MainActivity.this), true);
         }
-//            LogUtils.i(TAG, "点击了测试按钮");
     }
 
     @Override
@@ -78,5 +99,22 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
         dealMessage();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(MessageEvent event) {
+        ToastUtils.getIntance().showToast(MainActivity.this, event.message);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStart() {
+        EventBus.getDefault().unregister(this);
+        super.onStart();
     }
 }

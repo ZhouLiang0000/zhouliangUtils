@@ -1,4 +1,4 @@
-package com.zhouliang.utils.message;
+package com.zhouliang.utils.domain;
 
 /**
  * Created by zhouliang on 2017/8/8.

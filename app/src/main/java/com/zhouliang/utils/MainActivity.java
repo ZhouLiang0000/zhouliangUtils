@@ -3,17 +3,17 @@ package com.zhouliang.utils;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.annotation.NonNull;
+import android.view.View;
 import android.widget.Button;
 
 import com.zhouliang.util.AppUtils;
-import com.zhouliang.util.LogUtils;
 import com.zhouliang.util.NetUtils;
 import com.zhouliang.util.PermissionUtils;
 import com.zhouliang.util.ToastUtils;
 import com.zhouliang.utils.base.UtilsActivity;
-import com.zhouliang.utils.message.MessageEvent;
+import com.zhouliang.utils.domain.MessageEvent;
+import com.zhouliang.utils.domain.User;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -32,8 +32,10 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
     private static String packageName = "com.ai.kara.aitribe";
     private static String permission = Manifest.permission.READ_PHONE_STATE;
     private static final int MAIN_PERMISSION_CODE = 1;
-    @Bind(R.id.main_bt)
-    Button mainBt;
+    @Bind(R.id.eventbus_bt)
+    Button eventbusBt;
+    @Bind(R.id.utils_bt)
+    Button utilsBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +44,13 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.main_bt)
-    public void onViewClicked() {
-        dealMethod();
-    }
-
     private void skipActivityMethod() {
-        startActivity(new Intent(MainActivity.this, EventBusActivity.class));
-    }
-
-    private void dealMethod() {
-//        dealUtils();
-        skipActivityMethod();
+        User user = new User();
+        user.setUserName("周亮");
+        user.setUserGender("男");
+        EventBus.getDefault().postSticky(user);
+        Intent mIntent = new Intent(MainActivity.this, EventBusActivity.class);
+        startActivityForResult(mIntent, 100);
     }
 
     private void dealUtils() {
@@ -69,7 +66,6 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
     }
 
     private void dealMessage() {
-        LogUtils.i(TAG, "点击了测试按钮");
         if (AppUtils.isPackageExist(packageName, MainActivity.this)) {
             AppUtils.uninstallApk(MainActivity.this, packageName);
         } else {
@@ -101,32 +97,34 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
         dealMessage();
     }
 
-    @Subscribe(threadMode = ThreadMode.POSTING)
-    public void onMessagePostingEvent(MessageEvent event) {
-        LogUtils.i(TAG,"onMessagePostingEvent ---- " + event.message+"==========="+Thread.currentThread());
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 200) {
+            EventBus.getDefault().register(MainActivity.this);
+        }
     }
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageMainEvent(MessageEvent event) {
-        LogUtils.i(TAG,"onMessageMainEvent ---- " + event.message+"==========="+Thread.currentThread());
-    }
-    @Subscribe(threadMode = ThreadMode.BACKGROUND)
-    public void onMessageBackgroundEvent(MessageEvent event) {
-        LogUtils.i(TAG,"onMessageBackgroundEvent ---- " + event.message+"==========="+Thread.currentThread());
-    }
-    @Subscribe(threadMode = ThreadMode.ASYNC)
-    public void onMessageAsyncEvent(MessageEvent event) {
-        LogUtils.i(TAG,"onMessageAsyncEvent ---- " + event.message+"==========="+Thread.currentThread());
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onMessageStickyEvent(MessageEvent event) {
+        eventbusBt.setText(event.message);
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    protected void onStart() {
+    protected void onDestroy() {
+        super.onDestroy();
         EventBus.getDefault().unregister(this);
-        super.onStart();
+    }
+
+    @OnClick({R.id.eventbus_bt, R.id.utils_bt})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.eventbus_bt:
+                skipActivityMethod();
+                break;
+            case R.id.utils_bt:
+                dealUtils();
+                break;
+        }
     }
 }

@@ -101,9 +101,21 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
         dealMessage();
     }
 
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    public void onMessagePostingEvent(MessageEvent event) {
+        LogUtils.i(TAG,"onMessagePostingEvent ---- " + event.message+"==========="+Thread.currentThread());
+    }
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(MessageEvent event) {
-        ToastUtils.getIntance().showToast(MainActivity.this, event.message);
+    public void onMessageMainEvent(MessageEvent event) {
+        LogUtils.i(TAG,"onMessageMainEvent ---- " + event.message+"==========="+Thread.currentThread());
+    }
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    public void onMessageBackgroundEvent(MessageEvent event) {
+        LogUtils.i(TAG,"onMessageBackgroundEvent ---- " + event.message+"==========="+Thread.currentThread());
+    }
+    @Subscribe(threadMode = ThreadMode.ASYNC)
+    public void onMessageAsyncEvent(MessageEvent event) {
+        LogUtils.i(TAG,"onMessageAsyncEvent ---- " + event.message+"==========="+Thread.currentThread());
     }
 
     @Override

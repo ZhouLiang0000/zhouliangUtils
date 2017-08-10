@@ -13,47 +13,39 @@ public class User {
     private Long id;
     private String userName;
     private String userGender;
-
-    @Generated(hash = 1374613186)
-    public User(Long id, String userName, String userGender) {
-        this.id = id;
-        this.userName = userName;
-        this.userGender = userGender;
+    private String userAge;
+    public String getUserAge() {
+        return this.userAge;
     }
-
-    @Generated(hash = 586692638)
-    public User() {
+    public void setUserAge(String userAge) {
+        this.userAge = userAge;
     }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getUserGender() {
-        return userGender;
+        return this.userGender;
     }
-
     public void setUserGender(String userGender) {
         this.userGender = userGender;
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userName='" + userName + '\'' +
-                ", userGender='" + userGender + '\'' +
-                '}';
+    public String getUserName() {
+        return this.userName;
     }
-
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
     public Long getId() {
         return this.id;
     }
-
     public void setId(Long id) {
         this.id = id;
+    }
+    @Generated(hash = 334107271)
+    public User(Long id, String userName, String userGender, String userAge) {
+        this.id = id;
+        this.userName = userName;
+        this.userGender = userGender;
+        this.userAge = userAge;
+    }
+    @Generated(hash = 586692638)
+    public User() {
     }
 }

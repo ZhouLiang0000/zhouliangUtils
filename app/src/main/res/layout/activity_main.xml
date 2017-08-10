@@ -11,11 +11,19 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="测试EventBus按钮" />
+
     <Button
         android:id="@+id/utils_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="测试utils按钮" />
+
+    <Button
+        android:id="@+id/dao_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="测试dao按钮" />
 
 </LinearLayout>

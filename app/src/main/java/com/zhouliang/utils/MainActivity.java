@@ -36,6 +36,8 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
     Button eventbusBt;
     @Bind(R.id.utils_bt)
     Button utilsBt;
+    @Bind(R.id.dao_bt)
+    Button daoBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +118,7 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
         EventBus.getDefault().unregister(this);
     }
 
-    @OnClick({R.id.eventbus_bt, R.id.utils_bt})
+    @OnClick({R.id.eventbus_bt, R.id.utils_bt, R.id.dao_bt})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.eventbus_bt:
@@ -125,6 +127,10 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
             case R.id.utils_bt:
                 dealUtils();
                 break;
+            case R.id.dao_bt:
+                DaoActivity.skipToDaoActivity(MainActivity.this);
+                break;
         }
     }
+
 }

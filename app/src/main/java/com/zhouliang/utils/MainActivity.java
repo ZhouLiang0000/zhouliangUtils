@@ -44,6 +44,7 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        EventBus.getDefault().register(MainActivity.this);
     }
 
     private void skipActivityMethod() {
@@ -103,7 +104,7 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == 200) {
-            EventBus.getDefault().register(MainActivity.this);
+
         }
     }
 

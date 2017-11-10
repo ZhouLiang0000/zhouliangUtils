@@ -32,5 +32,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile project(":utils")
-//    compile 'com.github.ZhouLiang0000:zhouliangUtils:0.0.3'
+//    compile 'com.github.ZhouLiang0000:zhouliangUtils:0.0.4'
 }

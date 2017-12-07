@@ -14,7 +14,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -24,7 +24,7 @@ import butterknife.OnClick;
 
 public class EventBusActivity extends UtilsActivity {
     private static String TAG = EventBusActivity.class.getSimpleName();
-    @Bind(R.id.eventbus_bt)
+    @BindView(R.id.eventbus_bt)
     Button eventbusBt;
 
     @Override

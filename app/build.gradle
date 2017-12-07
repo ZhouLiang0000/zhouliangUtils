@@ -31,5 +31,5 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile project(":utils")
-//    compile 'com.github.ZhouLiang0000:zhouliangUtils:0.0.4'
+//    compile 'com.github.ZhouLiang0000:zhouliangUtils:1.0.1'
 }

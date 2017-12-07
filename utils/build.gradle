@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-
 android {
     compileSdkVersion 25
     buildToolsVersion '26.0.2'
@@ -9,9 +8,7 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
     buildTypes {
         release {
@@ -32,7 +29,9 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'pub.devrel:easypermissions:0.2.0'
     compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.jakewharton:butterknife:7.0.0'
+    // butterknife dependencies
+    compile 'com.jakewharton:butterknife:8.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.1.0'
     // greendao dependencies
     compile'org.greenrobot:greendao:3.1.0'
     compile'org.greenrobot:greendao-generator:3.1.0'

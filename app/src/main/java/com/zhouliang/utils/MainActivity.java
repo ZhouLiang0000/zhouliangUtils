@@ -21,7 +21,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pub.devrel.easypermissions.AppSettingsDialog;
@@ -32,11 +32,11 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
     private static String packageName = "com.ai.kara.aitribe";
     private static String permission = Manifest.permission.READ_PHONE_STATE;
     private static final int MAIN_PERMISSION_CODE = 1;
-    @Bind(R.id.eventbus_bt)
+    @BindView(R.id.eventbus_bt)
     Button eventbusBt;
-    @Bind(R.id.utils_bt)
+    @BindView(R.id.utils_bt)
     Button utilsBt;
-    @Bind(R.id.dao_bt)
+    @BindView(R.id.dao_bt)
     Button daoBt;
 
     @Override

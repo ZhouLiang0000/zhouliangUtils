@@ -16,7 +16,7 @@ import com.zhouliang.utils.domain.User;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -25,23 +25,23 @@ import butterknife.OnClick;
  */
 
 public class DaoActivity extends UtilsActivity {
-    @Bind(R.id.name_et)
+    @BindView(R.id.name_et)
     EditText nameEt;
-    @Bind(R.id.gender_et)
+    @BindView(R.id.gender_et)
     EditText genderEt;
-    @Bind(R.id.age_et)
+    @BindView(R.id.age_et)
     EditText ageEt;
-    @Bind(R.id.add_bt)
+    @BindView(R.id.add_bt)
     Button addBt;
-    @Bind(R.id.delete_bt)
+    @BindView(R.id.delete_bt)
     Button deleteBt;
-    @Bind(R.id.update_bt)
+    @BindView(R.id.update_bt)
     Button updateBt;
-    @Bind(R.id.query_bt)
+    @BindView(R.id.query_bt)
     Button queryBt;
-    @Bind(R.id.query_all_bt)
+    @BindView(R.id.query_all_bt)
     Button queryAllBt;
-    @Bind(R.id.dao_recyclerview)
+    @BindView(R.id.dao_recyclerview)
     RecyclerView daoRecyclerview;
     private UtilsApplication mUtilsApplication;
     private UserDao mUserDao;
@@ -103,7 +103,8 @@ public class DaoActivity extends UtilsActivity {
         userAge = ageEt.getText().toString().trim();
         userGender = genderEt.getText().toString().trim();
     }
-    private void cleanUserMessage(){
+
+    private void cleanUserMessage() {
         nameEt.setText("");
         ageEt.setText("");
         genderEt.setText("");
@@ -130,4 +131,5 @@ public class DaoActivity extends UtilsActivity {
     private List<User> queryAllData() {
         return mUserDao.loadAll();
     }
+
 }

@@ -1,4 +1,4 @@
-package com.zhouliang.util.base;
+package com.zhouliang.util.base.activity;
 
 import com.zhouliang.util.mvp.BaseView;
 

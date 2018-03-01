@@ -1,8 +1,9 @@
-package com.zhouliang.util.mvp;
+package com.zhouliang.util.base.activity;
 
 import android.os.Bundle;
 
-import com.zhouliang.util.base.AIBaseActivity;
+import com.zhouliang.util.base.activity.AIBaseActivity;
+import com.zhouliang.util.mvp.IMVPPresent;
 
 /**
  * Created by zhouliang on 2017/10/24.

@@ -38,6 +38,8 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
     Button utilsBt;
     @BindView(R.id.dao_bt)
     Button daoBt;
+    @BindView(R.id.memory_leakage)
+    Button memoryLeakageBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +121,7 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
         EventBus.getDefault().unregister(this);
     }
 
-    @OnClick({R.id.eventbus_bt, R.id.utils_bt, R.id.dao_bt})
+    @OnClick({R.id.eventbus_bt, R.id.utils_bt, R.id.dao_bt,R.id.memory_leakage})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.eventbus_bt:
@@ -130,6 +132,8 @@ public class MainActivity extends UtilsActivity implements EasyPermissions.Permi
                 break;
             case R.id.dao_bt:
                 DaoActivity.skipToDaoActivity(MainActivity.this);
+                break;
+            case R.id.memory_leakage:
                 break;
         }
     }

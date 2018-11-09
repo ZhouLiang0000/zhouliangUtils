@@ -33,14 +33,14 @@ public class myClass {
 //        System.out.println(getRemidTimeKeyAdoptValue("提前5分钟",false));
 //        System.out.println(getMinutesDiff("04:34","04:44"));
 //        String beginTime = "2018年04月22日";
-//        String endTime = "2018年04月20日";
+        String endTime = "20180607 00:00:00";
 //        String time1 = "2018-04-25 06:00:00";
 //        String time2 = "2018-04-26 06:00:00";
 //        getDate(beginTime,endTime,Constant.TIME_FORMAT_TYPE_CONTAIN_YEAR_AND_MONTH);
 //        getOffsetDate(beginTime, endTime, Constant.TIME_FORMAT_TYPE_CONTAIN_YEAR_AND_MONTH);
 //        System.out.println(getDateIsOneDay(beginTime,endTime,Constant.TIME_FORMAT_TYPE_CONTAIN_YEAR_AND_MONTH_ALL_DAY));
 //        System.out.println(getCurrentDayMorning(beginTime));
-//        System.out.println(endTime.substring(8,10));
+        System.out.println(endTime.substring(0,endTime.indexOf(" ")));
 //        System.out.println(getHomeDate(time));
 //        System.out.println(getStringStartDateAndEndDate(time1,time2));
 //        System.out.println(getKeyAndValue());
@@ -48,9 +48,9 @@ public class myClass {
 //        SimpleDateFormat format1 = new SimpleDateFormat(Constant.TIME_FORMAT_TYPE_CONTAIN_YEAR_AND_MONTH_ALL_DAY, Locale.CHINA);
 //        Date startDate = format1.parse(startTime);
 //        System.out.println(getweekByDate(startDate));
-        String oldVersion = "6.2.3";
-        String newVersion = "6.3";
-        System.out.println(compareVersion(newVersion,oldVersion));
+//        String oldVersion = "6.2.3";
+//        String newVersion = "6.3";
+//        System.out.println(compareVersion(newVersion,oldVersion));
     }
     /**
      * 比较版本号大小 3.1.1

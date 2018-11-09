@@ -26,4 +26,12 @@
         android:layout_centerInParent="true"
         android:text="测试dao按钮" />
 
+    <Button
+        android:id="@+id/memory_leakage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="跳转kotlin" />
+
+
 </LinearLayout>
